@@ -2,6 +2,8 @@
 
 Calculadora estática, instalável e com funcionamento offline. Não utiliza backend e não guarda encomendas centralmente.
 
+Esta versão inclui o logótipo oficial da TW Clothes no cabeçalho, nas cotações, no favicon e nos ícones de instalação.
+
 ## Publicar no GitHub Pages
 
 1. Crie um repositório público no GitHub, por exemplo `tw-clothes-calculator`.
