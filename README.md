@@ -8,7 +8,7 @@ Cada artigo pode receber uma fotografia do telefone. A imagem é utilizada na co
 
 - logótipo no canto superior esquerdo;
 - descrição no cabeçalho;
-- PVP sobreposto no canto inferior direito;
+- preço sobreposto no canto inferior direito;
 - opção para partilhar ou guardar a imagem.
 
 ## Publicar no GitHub Pages
