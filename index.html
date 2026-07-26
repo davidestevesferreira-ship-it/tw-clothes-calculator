@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#171311">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TW PVP">
+  <meta name="description" content="Calculadora de PVP da TW Clothes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <title>TW Clothes · Calculadora de PVP</title>
+  <style>
+    :root{--ink:#171311;--copper:#b77952;--copper2:#d7a17d;--cream:#f6f0e9;--paper:#fff;--muted:#746a64;--line:#e5d9cf;--ok:#386c55;--shadow:0 12px 36px #2d1c1218}
+    *{box-sizing:border-box}html{background:var(--cream)}body{margin:0;color:var(--ink);background:linear-gradient(150deg,#fff 0,#f6f0e9 55%,#eee1d7 100%);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+    button,input{font:inherit}button{cursor:pointer}.app{max-width:1080px;margin:auto;padding:env(safe-area-inset-top) 16px calc(32px + env(safe-area-inset-bottom))}
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 2px 14px}.brand{display:flex;align-items:center;gap:11px}.monogram{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--ink);font:800 18px/1 Georgia,serif;box-shadow:inset 0 0 0 2px var(--copper)}h1{font:700 20px/1.05 Georgia,serif;margin:0}.eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);font-weight:800;margin-bottom:4px}
+    .panel{background:#ffffffeb;border:1px solid #fff;border-radius:22px;padding:18px;box-shadow:var(--shadow);backdrop-filter:blur(12px)}.toolbar{display:flex;gap:8px}.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:750;background:var(--ink);color:#fff}.btn.secondary{background:#eee4dc;color:var(--ink)}.btn.copper{background:var(--copper)}.btn.icon{width:38px;height:38px;padding:0}
+    details{margin-bottom:14px;border:1px solid var(--line);border-radius:14px;background:#fcfaf8}summary{padding:12px 14px;cursor:pointer;font-weight:750;color:#493b33}.settings{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;padding:0 12px 12px}.field label{display:block;color:var(--muted);font-size:11px;font-weight:700;margin:0 0 5px}.field input{width:100%;min-width:0;padding:9px 8px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);outline:none}.field input:focus{border-color:var(--copper);box-shadow:0 0 0 3px #b7795222}
+    .table-head,.item{display:grid;grid-template-columns:minmax(120px,1.4fr) 90px 80px 110px 38px;gap:8px;align-items:end}.table-head{padding:0 4px 6px;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.item{padding:10px;margin-bottom:8px;border:1px solid var(--line);border-radius:14px;background:#fff}.item input{width:100%;min-width:0;height:38px;padding:7px 8px;border:1px solid var(--line);border-radius:9px}.item .pvp{height:38px;border-radius:9px;background:#f4e9e1;color:#6a3518;display:flex;align-items:center;justify-content:flex-end;padding:0 9px;font-weight:850;white-space:nowrap}
+    .add{width:100%;border:1px dashed var(--copper);background:#fff8f3;color:#754127;border-radius:12px;padding:10px;font-weight:750;margin-top:4px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.metric{padding:14px;border-radius:15px;background:#f7f2ed}.metric.primary{background:var(--ink);color:#fff}.metric span{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.metric.primary span{color:#cabfb8}.metric strong{font-size:20px;letter-spacing:-.03em}.note{font-size:11px;color:var(--muted);margin:11px 2px 0}.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+    .quote{display:none}.install-tip{display:none;position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:10;padding:14px 42px 14px 14px;border-radius:15px;background:var(--ink);color:#fff;box-shadow:var(--shadow);font-size:13px}.install-tip button{position:absolute;right:8px;top:7px;background:none;color:#fff;border:0;font-size:20px}
+    @media(max-width:720px){header{padding-top:14px}.app{padding-left:10px;padding-right:10px}.panel{padding:12px;border-radius:18px}.settings{grid-template-columns:repeat(2,1fr)}.table-head{display:none}.item{grid-template-columns:minmax(0,1.4fr) 72px 68px 96px 34px;gap:5px;padding:7px}.item input{font-size:13px;padding:6px}.item input:first-child{font-size:12px}.item .pvp{font-size:12px;padding:0 6px}.btn{padding:9px 11px}.summary{gap:6px}.metric{padding:10px}.metric strong{font-size:16px}.metric span{font-size:9px}.actions .btn{flex:1}.toolbar .secondary{display:none}}
+    @media(max-width:390px){.item{grid-template-columns:minmax(0,1.3fr) 65px 61px 88px 31px}.item input,.item .pvp{font-size:11px}.brand h1{font-size:18px}}
+    @media print{body{background:#fff}.app>header,.panel{display:none!important}.quote{display:block!important;padding:16mm;color:#171311}.quote-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #b77952;padding-bottom:12px}.quote-logo{font:800 26px Georgia,serif}.quote h2{font:500 15px sans-serif;color:#746a64}.quote-row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #ddd;padding:15px 0}.quote-row strong{font-size:18px}.quote-total{text-align:right;margin-top:28px}.quote-total strong{display:block;font:800 34px Georgia,serif;color:#8c4e2c}.quote small{color:#746a64}}
+  </style>
+</head>
+<body>
+<main class="app">
+  <header>
+    <div class="brand"><div class="monogram">TW</div><div><div class="eyebrow">TW Clothes</div><h1>Calculadora de PVP</h1></div></div>
+    <div class="toolbar"><button class="btn secondary" id="resetBtn">Limpar</button><button class="btn copper" id="printTop">Cotação</button></div>
+  </header>
+  <section class="panel">
+    <details>
+      <summary>Pressupostos do cálculo</summary>
+      <div class="settings">
+        <div class="field"><label for="exchange">Câmbio (MT/€)</label><input id="exchange" type="number" min="0" step=".01" value="80"></div>
+        <div class="field"><label for="rate">Transporte (MT/kg)</label><input id="rate" type="number" min="0" step="1" value="1450"></div>
+        <div class="field"><label for="minimum">Mínimo (MT)</label><input id="minimum" type="number" min="0" step="1" value="900"></div>
+        <div class="field"><label for="bag">Sacola/artigo (MT)</label><input id="bag" type="number" min="0" step="1" value="210"></div>
+        <div class="field"><label for="markup">Acréscimo (%)</label><input id="markup" type="number" min="0" step="1" value="30"></div>
+        <div class="field"><label for="rounding">Arredondar a (MT)</label><input id="rounding" type="number" min="1" step="1" value="50"></div>
+      </div>
+    </details>
+    <div class="table-head"><span>Artigo / descritivo</span><span>Preço (€)</span><span>Peso (kg)</span><span>PVP</span><span></span></div>
+    <div id="items"></div>
+    <button class="add" id="addBtn">＋ Adicionar artigo</button>
+    <div class="summary">
+      <div class="metric"><span>Peso total</span><strong id="totalWeight">0,00 kg</strong></div>
+      <div class="metric"><span>Transporte do lote</span><strong id="shipping">0 MT</strong></div>
+      <div class="metric primary"><span>PVP total do lote</span><strong id="grandTotal">0 MT</strong></div>
+    </div>
+    <p class="note">O transporte é calculado pelo peso total, respeitando o mínimo, e repartido igualmente pelos artigos. Cada PVP é arredondado sempre por excesso.</p>
+    <div class="actions"><button class="btn secondary" id="resetBottom">Limpar</button><button class="btn copper" id="printBtn">Gerar cotação / PDF</button></div>
+  </section>
+  <section class="quote" id="quote">
+    <div class="quote-header"><div><div class="quote-logo">TW Clothes</div><h2>Cotação</h2></div><small id="quoteDate"></small></div>
+    <div id="quoteItems"></div>
+    <div class="quote-total"><small>PVP TOTAL</small><strong id="quoteTotal"></strong></div>
+  </section>
+</main>
+<aside class="install-tip" id="installTip">Para instalar no iPhone: no Safari, toque em <b>Partilhar</b> e depois em <b>Adicionar ao ecrã principal</b>.<button aria-label="Fechar" id="closeTip">×</button></aside>
+<template id="itemTemplate">
+  <div class="item">
+    <input class="desc" type="text" placeholder="Ex.: Polo branca / L · Zara" aria-label="Descrição do artigo">
+    <input class="eur" type="number" min="0" step=".01" inputmode="decimal" placeholder="0,00" aria-label="Preço em euros">
+    <input class="weight" type="number" min="0" step=".01" inputmode="decimal" placeholder="0,00" aria-label="Peso em quilogramas">
+    <output class="pvp">0 MT</output>
+    <button class="btn icon secondary remove" aria-label="Remover artigo">×</button>
+  </div>
+</template>
+<script>
+  const $=s=>document.querySelector(s), items=$("#items"), money=n=>Math.round(n).toLocaleString("pt-PT").replace(/\./g," ")+" MT";
+  const num=id=>Math.max(0,Number($(id).value)||0);
+  function addItem(data={}){const node=$("#itemTemplate").content.firstElementChild.cloneNode(true);node.querySelector(".desc").value=data.desc||"";node.querySelector(".eur").value=data.eur||"";node.querySelector(".weight").value=data.weight||"";node.querySelectorAll("input").forEach(el=>el.addEventListener("input",calculate));node.querySelector(".remove").onclick=()=>{if(items.children.length>1)node.remove();else node.querySelectorAll("input").forEach(x=>x.value="");calculate()};items.append(node);calculate()}
+  function calculate(){const rows=[...items.children], totalWeight=rows.reduce((s,r)=>s+(Number(r.querySelector(".weight").value)||0),0);const shipping=rows.length?Math.max(totalWeight*num("#rate"),num("#minimum")):0;const share=rows.length?shipping/rows.length:0, exchange=num("#exchange"), bag=num("#bag"), factor=1+num("#markup")/100, rounding=Math.max(1,num("#rounding"));let grand=0;rows.forEach(r=>{const eur=Math.max(0,Number(r.querySelector(".eur").value)||0);const pvp=Math.ceil(((eur*exchange+share+bag)*factor)/rounding)*rounding;r.dataset.pvp=pvp;grand+=pvp;r.querySelector(".pvp").textContent=money(pvp)});$("#totalWeight").textContent=totalWeight.toLocaleString("pt-PT",{minimumFractionDigits:2,maximumFractionDigits:2})+" kg";$("#shipping").textContent=money(shipping);$("#grandTotal").textContent=money(grand)}
+  function reset(){if(!confirm("Limpar todos os artigos?"))return;items.innerHTML="";addItem()}
+  function printQuote(){calculate();const valid=[...items.children].filter(r=>r.querySelector(".desc").value.trim()||Number(r.querySelector(".eur").value));$("#quoteItems").innerHTML=valid.map((r,i)=>`<div class="quote-row"><div><small>ARTIGO ${i+1}</small><div>${escapeHtml(r.querySelector(".desc").value.trim()||"Artigo")}</div></div><strong>${money(Number(r.dataset.pvp)||0)}</strong></div>`).join("");const total=valid.reduce((s,r)=>s+(Number(r.dataset.pvp)||0),0);$("#quoteTotal").textContent=money(total);$("#quoteDate").textContent=new Date().toLocaleDateString("pt-PT");window.print()}
+  function escapeHtml(v){const d=document.createElement("div");d.textContent=v;return d.innerHTML}
+  ["#exchange","#rate","#minimum","#bag","#markup","#rounding"].forEach(id=>$(id).addEventListener("input",calculate));
+  $("#addBtn").onclick=()=>addItem();$("#resetBtn").onclick=$("#resetBottom").onclick=reset;$("#printBtn").onclick=$("#printTop").onclick=printQuote;$("#closeTip").onclick=()=>{localStorage.setItem("tw-install-tip","closed");$("#installTip").style.display="none"};
+  addItem();
+  if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!window.navigator.standalone&&!localStorage.getItem("tw-install-tip"))setTimeout(()=>$("#installTip").style.display="block",1200);
+  if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"));
+</script>
+</body>
+</html>
