@@ -1,4 +1,4 @@
-const CACHE="tw-pvp-v2-logo-oficial";
+const CACHE="tw-pvp-v3-mobile-lucro";
 const ASSETS=["./","./index.html","./manifest.webmanifest","./tw-clothes-logo.webp","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon.ico"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));

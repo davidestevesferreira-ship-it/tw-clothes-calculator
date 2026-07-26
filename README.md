@@ -33,8 +33,9 @@ Preencha os artigos e carregue em **Gerar cotação / PDF**. No ecrã de impress
 - Compra: preço em EUR × câmbio.
 - Transporte: maior valor entre peso total × tarifa/kg e o mínimo.
 - Transporte repartido igualmente pelo número de artigos.
-- Sacola aplicada por artigo.
+- O custo total da sacola é repartido igualmente por todos os artigos.
 - Acréscimo predefinido: 30%.
 - PVP arredondado sempre por excesso ao múltiplo escolhido.
+- O resumo apresenta o lucro estimado total do lote.
 
 Os pressupostos podem ser alterados dentro da calculadora.
